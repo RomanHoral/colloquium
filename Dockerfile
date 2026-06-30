@@ -1,5 +1,11 @@
-FROM nginx:alpine
+FROM python:3.11-slim
 
-COPY . /usr/share/nginx/html
+WORKDIR /app
 
-EXPOSE 80
+COPY . .
+
+RUN pip install flask requests
+
+EXPOSE 5000
+
+CMD ["python", "app.py"]
